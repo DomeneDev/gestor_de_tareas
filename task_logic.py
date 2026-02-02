@@ -74,7 +74,7 @@ def completar_tarea(lista_tareas: list, id_tarea: int) -> bool:
     return False
 
 
-def elminar_tareas(lista_tareas: list, id_tarea: int) -> bool:
+def eliminar_tareas(lista_tareas: list, id_tarea: int) -> bool:
     """
     Función para elminar tareas de la lista
 
