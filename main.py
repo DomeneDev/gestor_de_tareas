@@ -22,29 +22,61 @@ def ejecutar_gestor_tareas():
         print("| 5 - Salir.                        |")
         print("+-----------------------------------+\n")
         # Opción introducidad por el usuario
-        opcion = int(input("👉Introduce una opción: "))
+        while True:
+            try:
+                opcion = int(input("👉Introduce una opción: "))
+                break
+            except ValueError:
+                print("🛑 El valor introducido debe ser un número entero")
         # Evaluamos opcion y actuamos en consecuencia
         match opcion:
             case 1:  # Agregar tarea
-                descripcion = input("Introduce la descripción de la tarea: \n")
+                while True:
+                    descripcion = input(
+                        "Introduce la descripción de la tarea: \n")
+                    try:
+                        if not descripcion.strip():
+                            raise ValueError(
+                                "🛑 No has introducido un nombre válido.."
+                            )
+                        else:
+                            break
+                    except ValueError as e:
+                        print(f"❌ Error: {e}")
                 prioridad = input(
                     "Introduce priodidad de la tarea (Alta/Media/Baja): ").title()
                 agregar_tarea(tareas, descripcion, prioridad)
                 print("✅ Tarea añadida correctemente.\n")
             case 2:  # Completar tarea
-                id_tarea = int(
-                    input("Introduce el ID de la tarea a completar: "))
-                if completar_tarea(tareas, id_tarea):
-                    print(f"✅ Tarea con ID: {id_tarea} completada.\n")
-                else:
-                    print(f"📛 No existe la tarea con ID: {id_tarea}.\n")
+                while True:
+                    id_tarea = input(
+                        "Introduce el ID de la tarea a completar: ")
+                    try:
+                        id_tarea = int(id_tarea)
+                        if completar_tarea(tareas, id_tarea):
+                            print(f"✅ Tarea con ID: {id_tarea} completada.\n")
+                            break
+                        else:
+                            print(
+                                f"📛 No existe la tarea con ID: {id_tarea}.\n")
+                            break
+                    except ValueError:
+                        print("🛑 Error: El ID debe de ser un número entero")
             case 3:  # Eliminar tarea
-                id_tarea = int(
-                    input("Introduce el ID de la tarea a eliminar: "))
-                if eliminar_tareas(tareas, id_tarea):
-                    print(f"✅ Tarea con ID: {id_tarea} eliminada.\n")
-                else:
-                    print(f"📛 No existe la tarea con ID: {id_tarea}.\n")
+                while True:
+                    id_tarea = input(
+                        "Introduce el ID de la tarea a completar: ")
+                    try:
+                        id_tarea = int(id_tarea)
+                        if eliminar_tareas(tareas, id_tarea):
+                            print(f"✅ Tarea con ID: {id_tarea} eliminada.\n")
+                            break
+                        else:
+                            print(
+                                f"📛 No existe la tarea con ID: {id_tarea}.\n")
+                            break
+                    except ValueError:
+                        print("🛑 Error: El ID debe de ser un número entero")
             case 4:  # Mostrar tareas
                 tareas_a_mostrar = obtener_tareas(tareas)
                 print("Lista de tareas:")
