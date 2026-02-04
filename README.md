@@ -15,14 +15,15 @@ task_master/
 ├── main.py              # Orquestador del programa y menú match-case.
 ├── task_logic.py        # Motor de gestión de la lista de tareas.
 └── README.md            # Documentación del proyecto.
+```
 🛠️ Instalación y Uso
 Asegúrate de tener instalado Python 3.10 o superior.
 
 Ejecuta el programa principal:
-
+```plaintext
 Bash
-
 python main.py
+```
 🛡️ Roadmap de Aprendizaje (Sprints)
 [ ] Sprint 1: Lógica Core
 
