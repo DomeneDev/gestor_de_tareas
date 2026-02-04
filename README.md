@@ -25,11 +25,11 @@ Bash
 python main.py
 ```
 🛡️ Roadmap de Aprendizaje (Sprints)
-[ ] Sprint 1: Lógica Core
+[x] Sprint 1: Lógica Core
 
 CRUD básico de tareas (Crear, Leer, Eliminar) usando listas de diccionarios.
 
-[ ] Sprint 2: Robustez y Validación
+[x] Sprint 2: Robustez y Validación
 
 Control de errores en la entrada de prioridades y selección de IDs.
 
