@@ -1,4 +1,20 @@
 from task_logic import agregar_tarea, obtener_tareas, completar_tarea, eliminar_tareas
+from utils import mostrar_menu, validar_opcion, leer_cadenas, validacion_dato, establecer_prioridad, mostrar_tareas
+
+
+# ----  CONSTANTES PARA INPUTS ----
+INPUT_OPC = "👉Introduce una opción: "
+INPUT_DESC = "Introduce la descripción de la tarea: "
+INPUT_PR = "Introduce la prioridad (Alta/Media/Baja): "
+INPUT_ID = "Introduce el ID de la tarea a completar: "
+
+# ---- COSNTANTES PARA ERROR ----
+ERROR_OPC = "🛑 El valor introducido debe ser un número entero"
+ERROR_DESC = "🛑 No has introducido un nombre válido.."
+ERROR_PR = "🛑 Introduce una prioridad válida."
+ERROR_ID_NEG = "🛑 Una tarea no puede tener un ID negativo..."
+ERROR_ID = "🛑 Introduce un valor válido (numero entero)."
+
 
 # Bucle principal del programa
 
@@ -12,96 +28,36 @@ def ejecutar_gestor_tareas():
     # Bucle principal del programa
     while True:
         # Menu de acciones de la app
-        print("+-----------------------------------+")
-        print("|  ✍ Gestor de tareas 1.0           |")
-        print("+-----------------------------------+")
-        print("| 1 - Agregar tarea.                |")
-        print("| 2 - Completar tarea.              |")
-        print("| 3 - Elminar tarea.                |")
-        print("| 4 - Mostrar tareas.               |")
-        print("| 5 - Salir.                        |")
-        print("+-----------------------------------+\n")
+        mostrar_menu()
         # Opción introducidad por el usuario
-        while True:
-            try:
-                opcion = int(input("👉Introduce una opción: "))
-                break
-            except ValueError:
-                print("🛑 El valor introducido debe ser un número entero")
+        opcion = validar_opcion(INPUT_OPC, ERROR_OPC)
         # Evaluamos opcion y actuamos en consecuencia
         match opcion:
             case 1:  # Agregar tarea
-                while True:
-                    descripcion = input(
-                        "Introduce la descripción de la tarea: \n")
-                    try:
-                        if not descripcion.strip():
-                            raise ValueError(
-                                "🛑 No has introducido un nombre válido.."
-                            )
-                        else:
-                            break
-                    except ValueError as e:
-                        print(f"❌ Error: {e}")
-                prioridad = input(
-                    "Introduce priodidad de la tarea (Alta/Media/Baja): ").title()
+                descripcion = leer_cadenas(INPUT_DESC, ERROR_DESC)
+                prioridad = establecer_prioridad(INPUT_PR, ERROR_PR)
                 agregar_tarea(tareas, descripcion, prioridad)
                 print("✅ Tarea añadida correctemente.\n")
             case 2:  # Completar tarea
-                while True:
-                    id_tarea = input(
-                        "Introduce el ID de la tarea a completar: ")
-                    try:
-                        id_tarea = int(id_tarea)
-                        if completar_tarea(tareas, id_tarea):
-                            print(f"✅ Tarea con ID: {id_tarea} completada.\n")
-                            break
-                        else:
-                            print(
-                                f"📛 No existe la tarea con ID: {id_tarea}.\n")
-                            break
-                    except ValueError:
-                        print("🛑 Error: El ID debe de ser un número entero")
+                id_tarea = validacion_dato(
+                    INPUT_ID, ERROR_ID_NEG, ERROR_ID, int)
+                if completar_tarea(tareas, id_tarea):
+                    print(f"✅ Tarea con ID: {id_tarea} completada.\n")
+                else:
+                    print(
+                        f"📛 No existe la tarea con ID: {id_tarea}.\n")
             case 3:  # Eliminar tarea
                 while True:
-                    id_tarea = input(
-                        "Introduce el ID de la tarea a completar: ")
-                    try:
-                        id_tarea = int(id_tarea)
-                        if eliminar_tareas(tareas, id_tarea):
-                            print(f"✅ Tarea con ID: {id_tarea} eliminada.\n")
-                            break
-                        else:
-                            print(
-                                f"📛 No existe la tarea con ID: {id_tarea}.\n")
-                            break
-                    except ValueError:
-                        print("🛑 Error: El ID debe de ser un número entero")
+                    id_tarea = validacion_dato(
+                        INPUT_ID, ERROR_ID_NEG, ERROR_ID, int)
+                    if eliminar_tareas(tareas, id_tarea):
+                        print(f"✅ Tarea con ID: {id_tarea} eliminada.\n")
+                    else:
+                        print(
+                            f"📛 No existe la tarea con ID: {id_tarea}.\n")
             case 4:  # Mostrar tareas
                 tareas_a_mostrar = obtener_tareas(tareas)
-                print("Lista de tareas:")
-                print("----------------------------------")
-                # Si hay tareas en la lista
-                if tareas_a_mostrar:
-                    # Recorremos la lista de tareas.
-                    for tarea in tareas:
-                        # Establecer formato de prioridad
-                        if tarea['prioridad'] == "Alta":
-                            prioridad = "🔴 Alta"
-                        elif tarea['prioridad'] == "Media":
-                            prioridad = "🟡 Media"
-                        elif tarea['prioridad'] == "Baja":
-                            prioridad = "🟢 Baja"
-                        # Establecer formato de completado
-                        if tarea['completada']:
-                            completado = "✅ Completado"
-                        else:
-                            completado = "❌ Sin completar"
-                        print(f"Tarea: {tarea['id']}.")
-                        print(f" - Prioridad: {prioridad}.")
-                        print(f" - Descripcion: {tarea['descripcion']}.")
-                        print(f" - Compeltada: {completado}.")
-                        print("----------------------------------")
+                mostrar_tareas(tareas_a_mostrar)
             case 5:
                 print("🖐 Saliendo del programa....")
                 break
