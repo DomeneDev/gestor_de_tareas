@@ -25,6 +25,7 @@ Bash
 python main.py
 ```
 🛡️ Roadmap de Aprendizaje (Sprints)
+
 [x] Sprint 1: Lógica Core
 
 CRUD básico de tareas (Crear, Leer, Eliminar) usando listas de diccionarios.
@@ -33,7 +34,7 @@ CRUD básico de tareas (Crear, Leer, Eliminar) usando listas de diccionarios.
 
 Control de errores en la entrada de prioridades y selección de IDs.
 
-[ ] Sprint 3: Refactorización Arquitectónica (Utils)
+[x] Sprint 3: Refactorización Arquitectónica (Utils)
 
 Aplicación de la Navaja de Ockham: Separación de UI y utilidades.
 
