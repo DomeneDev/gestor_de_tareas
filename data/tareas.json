@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "descripcion": "comprar pan",
+        "prioridad": "Media",
+        "completada": false
+    },
+    {
+        "id": 2,
+        "descripcion": "fregar platos",
+        "prioridad": "Media",
+        "completada": false
+    },
+    {
+        "id": 3,
+        "descripcion": "estudiar",
+        "prioridad": "Alta",
+        "completada": false
+    }
+]
