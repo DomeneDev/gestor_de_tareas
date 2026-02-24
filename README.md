@@ -12,6 +12,9 @@ Aplicación de consola diseñada para la gestión eficiente de tareas pendientes
 
 ```plaintext
 task_master/
+├──data/                 # Carpeta para ficheros
+|   ├─tareas.json        # Fichero json donde se alamacena la lista de tareas
+├── json_manager.py      # Manejador de datos json
 ├── main.py              # Orquestador del programa y menú match-case.
 ├── task_logic.py        # Motor de gestión de la lista de tareas.
 └── README.md            # Documentación del proyecto.
@@ -38,7 +41,7 @@ Control de errores en la entrada de prioridades y selección de IDs.
 
 Aplicación de la Navaja de Ockham: Separación de UI y utilidades.
 
-[ ] Sprint 4: Persistencia de Datos
+[x] Sprint 4: Persistencia de Datos
 
 Guardado automático y carga desde archivo CSV.
 
