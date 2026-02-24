@@ -7,17 +7,16 @@ def mostrar_menu():
     """
     Función para mostrar menú
     """
-    while True:
-        # Menu de acciones de la app
-        print("+-----------------------------------+")
-        print("|  ✍ Gestor de tareas 1.0           |")
-        print("+-----------------------------------+")
-        print("| 1 - Agregar tarea.                |")
-        print("| 2 - Completar tarea.              |")
-        print("| 3 - Elminar tarea.                |")
-        print("| 4 - Mostrar tareas.               |")
-        print("| 5 - Salir.                        |")
-        print("+-----------------------------------+\n")
+    # Menu de acciones de la app
+    print("+-----------------------------------+")
+    print("|  ✍ Gestor de tareas 1.0           |")
+    print("+-----------------------------------+")
+    print("| 1 - Agregar tarea.                |")
+    print("| 2 - Completar tarea.              |")
+    print("| 3 - Elminar tarea.                |")
+    print("| 4 - Mostrar tareas.               |")
+    print("| 5 - Salir.                        |")
+    print("+-----------------------------------+\n")
 
 
 def validar_opcion(msg_input: str, msg_error: str) -> int:
