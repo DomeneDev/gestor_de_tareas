@@ -45,7 +45,4 @@ Aplicación de la Navaja de Ockham: Separación de UI y utilidades.
 
 Guardado automático y carga desde archivo CSV.
 
-[ ] Sprint 5: Paradigma de Objetos (POO)
-
-Transformación a clases Task y TaskManager.
 ```
